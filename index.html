@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Animal {
+        name;
+        weight;
+        speed;
+        say;
+        constructor(name, weight, speed, say) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.say = say;
+        }
+        getName(){
+            return this.name;
+        }
+        setName(name){
+            this.name = name;
+        }
+        getWeight(){
+            return this.weight;
+        }
+        setWeight(weight){
+            this.weight = weight;
+        }
+        getSpeed(){
+            return this.speed;
+        }
+        setSpeed(speed){
+            this.speed = speed;
+        }
+        getSay(){
+            return this.say;
+        }
+        setSay(say){
+            this.say = say;
+        }
+    }
+    class Mouse extends Animal{
+        isDead;
+        constructor(name, weight, speed, say, isDead) {
+            super(name, weight, speed, say);
+            this.isDead = isDead;
+        }
+        getIsDead(){
+            if(this.isDead){
+                console.log('Chuột chết!')
+            } else {
+                console.log('Tao vẫn sống nhé! ')
+            }
+            return this.isDead;
+        }
+        setIsDead(isDead){
+            this.isDead = isDead;
+        }
+    }
+    class Cat extends Animal{
+        constructor(name, weight, speed, say) {
+            super(name, weight, speed, say);
+        }
+        catchTheMouse(mouse){
+            if(super.getSpeed()>mouse.speed){
+                console.log('Tao bắt được mày rồi!')
+                mouse.setIsDead(true);
+            } else {
+                console.log('Nó chạy nhanh vãi')
+                mouse.setIsDead(false);
+            }
+        }
+        eatMouse(mouse){
+            if(mouse.getIsDead()){
+                super.setWeight(super.getWeight()+mouse.getWeight());
+                console.log('Sau khi ăn thịt mày thì tao ---> ', super.getWeight())
+            }
+        }
+    }
+    //MAIN TEST CHỨC NĂNG
+    mouse1 = new Mouse('Jerry1', 10, 5, 'CHÍT CHÍT', false)
+    mouse2 = new Mouse('Jerry1', 10, 20, 'CHÍT CHÍT', false)
+    cat1 = new Cat('Tom1', 20,15, 'MEO MEO')
+
+</script>
+</body>
+</html>
